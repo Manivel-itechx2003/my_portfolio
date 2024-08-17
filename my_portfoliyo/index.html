@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manivel's Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+     <link rel="server" href="server.js">
+</head>
+<body style="background-color: rgb(0, 0, 0);">
+    <header id="header">
+        <h1>Manivel</h1>
+        <nav>
+            <!-- Menu Icon -->
+            <div class="menu-icon" id="menu-icon">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+            <!-- Navigation links -->
+            <div id="myLinks">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
+        
+    </header>
+
+    <section id="home">
+        
+            <div class="overlay">
+                <div class="container">
+                    <div class="profile-wrapper">
+                        <img src="./images/profile.jpg" alt="Profile Photo" class="profile-img">
+                    </div>
+                    <h2>Welcome to My Portfolio</h2>
+                    <p style="color: aliceblue; font-weight: lighter;">Hi, I'm Manivel, a Web Developer and Digital Marketer.</p>
+                    <button>
+                    <a href="#projects" class="btn" style="font-weight: bold;">View My Work</a>
+                    </button>
+                </div>
+            </div>
+        
+    </section>
+    
+    
+
+    <section id="about">
+        <div class="wave"></div>
+        <div class="container">
+            <h2>About Me</h2>
+            <p><strong>Hello, I'm Manivel,</strong> a passionate website developer with a strong foundation in digital marketing. I am currently pursuing my <strong>Bachelor’s degree in Information Technology (B.Tech IT)</strong> and have achieved a <strong>CGPA of 80%</strong> up to my 5th semester. I'm actively seeking opportunities to further my career as a developer and contribute to innovative projects.</p>
+        </div>
+    </section>
+    
+    <section id="projects" class="projects-section">
+        <h2>My Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card" data-title="Project 1">
+                <img src="./images/blog.jpg" alt="Project 1">
+                <div class="project-info">
+                    <h3 style="font-weight: bolder;">Project 1</h3>
+                    <a href="https://github.com/Manivel-itechx2003/manivelblog" target="_blank">
+                    <p style="font-style: italic;">MANIVEL-BLOG</p>
+                </a>
+                </div>
+            </div>
+            <div class="project-card" data-title="Project 2">
+                <img src="./images/mdcalc.jpg" alt="Project 2">
+                <div class="project-info">
+                    <h3 style="font-weight: bolder;">Project 2</h3>
+                    <a href="https://github.com/Manivel-itechx2003/projects-reactjs" target="_blank">
+                    <p style="font-style: italic;">REACT-CALCULATOR</p>
+                    </a>
+                </div>
+            </div>
+            <!-- Add more projects as needed -->
+        </div>
+    </section>
+    
+
+    <section id="contact">
+    <div class="container">
+        <h2>Contact Me</h2>
+        <form id="contact-form">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" placeholder="Your Message" required></textarea>
+            <button type="submit" class="btn">Send Message</button>
+        </form>
+    </div>
+</section>
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Manivel. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="style.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+
+    <script>
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+        
+            const form = event.target;
+            const formData = new FormData(form);
+        
+            fetch('http://localhost:3000/send', {
+                method: 'POST',
+                body: JSON.stringify({
+                    name: formData.get('name'),
+                    email: formData.get('email'),
+                    message: formData.get('message')
+                }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => response.text())
+            .then(data => {
+                alert('Message sent successfully!');
+                form.reset();
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('There was a problem sending your message.');
+            });
+        });
+        </script>
+
+
+</body>
+</html>
