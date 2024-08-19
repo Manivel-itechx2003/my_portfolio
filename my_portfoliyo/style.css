@@ -1162,3 +1162,16 @@ body {
         font-size: 2rem;
     }
 }
+
+button{
+    padding: 7px 25px;
+    border-radius: 9px;
+    font-size: 17px;
+    background: cyan;
+}
+
+button:hover{
+    box-shadow: 0 0 5px cyan,
+    0 0 25px cyan,0 0 50px cyan,
+    0 0 100px cyan, 0 0 200px cyan; 
+}
